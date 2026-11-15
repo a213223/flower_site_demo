@@ -20,14 +20,14 @@ const STORAGE_CART_KEY = 'botanika_cart_v1';
 export const App: React.FC = () => {
   // Navigation / View State
   const [isAdminView, setIsAdminView] = useState<boolean>(() => {
-    return window.location.pathname.startsWith('/admin') || window.location.hash === '#admin';
+    return window.location.pathname.endsWith('/admin') || window.location.pathname.includes('/admin') || window.location.hash === '#admin';
   });
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState<boolean>(() => checkAdminAuth());
 
   // Listen to browser popstate / hash
   useEffect(() => {
     const handlePopState = () => {
-      const isPathAdmin = window.location.pathname.startsWith('/admin') || window.location.hash === '#admin';
+      const isPathAdmin = window.location.pathname.endsWith('/admin') || window.location.pathname.includes('/admin') || window.location.hash === '#admin';
       setIsAdminView(isPathAdmin);
       setIsAdminAuthenticated(checkAdminAuth());
     };
