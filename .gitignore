@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Secrets
+.ssh_deploy_key*
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
